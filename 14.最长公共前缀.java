@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /*
  * @lc app=leetcode.cn id=14 lang=java
  *
@@ -45,31 +43,21 @@ class Solution {
         if(length==1){
             return firstStr;
         }
-        ArrayList<Character> longestCommonPrefixCharList = new ArrayList<Character>();
         int firstStrLength = firstStr.length();
-        boolean jump = false;
+        StringBuilder stringBuilder = new StringBuilder(firstStrLength);
         for(int index=0;index<firstStrLength;index++){
             char currentCar = firstStr.charAt(index);
             for(int i=1;i<length;i++){
                 if(index>=strs[i].length()){//索引位置以及超长了
-                    jump = true;
-                    break;
+                    return stringBuilder.toString();
                 }
                 if(strs[i].charAt(index)!=currentCar){
-                    jump = true;
-                    break;
+                    return stringBuilder.toString();
                 }
             }
-            if(jump){
-                break;
-            }
-            longestCommonPrefixCharList.add(currentCar);
+            stringBuilder.append(currentCar);
         }
-        char[] strChar = new char[longestCommonPrefixCharList.size()];
-        for(int i=0;i<longestCommonPrefixCharList.size();i++){
-            strChar[i] = longestCommonPrefixCharList.get(i);
-        }
-        return new String(strChar);
+        return stringBuilder.toString();
     }
 }
 

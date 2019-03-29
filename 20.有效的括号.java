@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
  * @lc app=leetcode.cn id=20 lang=java
@@ -57,42 +59,17 @@ import java.util.List;
  */
 class Solution {
     public boolean isValid(String s) {
-        ArrayList<Character> list = new ArrayList<Character>();
         int length = s.length();
-        Character c1 = '(';
-        Character c2 = '[';
-        Character c3 = '{';
-        for(int i=0;i<length;i++){
-            char c = s.charAt(i);
-            if(c=='(' || c=='[' || c=='{'){
-                list.add(c);
-            }else if (c==')'){
-                if(list.size()==0){
-                    return false;
-                }
-                boolean success = list.remove(c1);
-                if(!success){
-                    return false;
-                }
-            }else if(c==']'){
-                if(list.size()==0){
-                    return false;
-                }
-                boolean success = list.remove(c2);
-                if(!success){
-                    return false;
-                }
-            }else if(c=='}'){
-                if(list.size()==0){
-                    return false;
-                }
-                boolean success = list.remove(c3);
-                if(!success){
-                    return false;
-                }
-            }
+        if(length%2!=0){
+            return false;
         }
-        return list.size()==0;
+        int mid = length/2;
+        char nextChar;
+        HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+        for(int i=0;i<length;i++){
+            
+        }
+        return true;
     }
 }
 
